@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Cyber Crime Reporting Form</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        padding: 10px;
+
+    }
+    body {
+    background-color: #212121;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.fullform {
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid white;
+    background-color: #3a3a3a;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fullform label {
+    display: block;
+    margin-top: 20px;
+}
+
+.fullform input[type="text"], .fullform input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid white;
+    background-color: #3a3a3a;
+    color: white;
+}
+
+.fullform button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+body {
+    font-size: 24px;
+}
+.fullform button:hover {
+    background-color: #e53935;
+}
+footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+</style>
+<body>
+ <h1>Cyber Crime Reporting Form</h1>
+ <form action="/submit_report" method="post" name="google-sheet">
+    <B>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    </B>
+    <br><br>
+    <B>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+     </B>
+    <br><br>
+    <B>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required>
+     </B>
+    <br><br>
+    <B>
+    <label for="incident-date">Incident Date:</label>
+    <input type="date" id="incident-date" name="incident-date" required>
+    </B>
+    <br><br>
+    <B>
+    <label for="incident-location">Incident Location:</label>
+    <input type="text" id="incident-location" name="incident-location" required>
+    </B>
+    <br><br>
+      <B>   
+     <label for="incident-type">Incident Type:</label>
+    <select id="incident-type" name="incident-type" required>
+      <option value="hacking">Hacking</option>
+      <option value="identity-theft">Identity Theft</option>
+      <option value="fraud">Fraud</option>
+      <option value="cyber-bullying">Cyber Bullying</option>
+      <option value="other">Other</option>
+    </select>
+    </B>
+    <br><br>
+    <B>
+    <label for="incident-description">Incident Description:</label>
+    <textarea id="incident-description" name="incident-description" rows="4" cols="50" required></textarea>
+      </B>
+    <br><br>
+    <B>
+    <label for="honeypot">Special Mark:</label>
+    <input type="text" id="honeypot" name="honeypot">
+     </B>
+    <br><br>
+    <input type="submit" value="Submit Report">
+ </form>
+ 
+
+
+
+ <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx6fICHDHsQ6XLip5re4mUvjF4ptKpEHJkez7VRh1k1umDlmfNNHg7gjUpVo2vXgpd9/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Shortly..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+<footer>
+    <p>&copy; 2024 CyberCrime Watch. All rights reserved.
+</footer>
+ 
+</body>
+</html>
